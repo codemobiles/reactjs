@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css"
-import Counter from "./Counter";
+import {Counter} from "./Counter";
 
 export default function App() {
   const [count, setCount] = useState(0);
@@ -31,7 +31,7 @@ export default function App() {
       {/* JSX */}
       <button onClick={() => setCount(count - 1)}>REMOCE</button>
 
-      <Counter/>
+      <Counter count={count}/>
     </div>
   );
 }

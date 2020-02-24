@@ -1,9 +1,10 @@
 import React from 'react'
 
-export default function Counter() {
+export  function Counter(props) {
     return (
-        <div>
+        <div style={{backgroundColor: 'white'}}>
             <h1>Counter</h1>
+            <h2>{props.count}</h2>
         </div>
     )
 }
