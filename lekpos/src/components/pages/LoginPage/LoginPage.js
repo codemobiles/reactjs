@@ -16,7 +16,10 @@ const showForm = (props) => {
 const LoginPage = () => {
   return (
     <div>
-      <Formik initialValues={{username: "lek", password: "1234"}}>
+      <Formik initialValues={{username: "lek", password: "1234"}}
+        onSubmit={(values, {setSubmitting})=>{
+          alert(JSON.stringify(values))
+        }}>
         {props=>showForm(props)}
       </Formik>
     </div>
