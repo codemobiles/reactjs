@@ -2,10 +2,9 @@
 #Setup React Material
 ----------------------
 npm i -g yarn
-yarn add @material-ui/core
+yarn add @material-ui/core @material-ui/icons
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-yarn add @material-ui/icons
 
 
 Material Links#
