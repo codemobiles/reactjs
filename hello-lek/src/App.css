@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+
+.Root {
+  background-color: "#00F";
+  text-align: "center";
+  padding-top: 50;
+  padding-bottom: 50;
+}

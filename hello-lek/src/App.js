@@ -1,19 +1,33 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from "react";
 
 export default function App() {
-
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
-    console.log("Initial")    
-  }, [])
+    console.log("Initial");
+  }, []);
+
+
+  const styles = {
+    root: {
+      backgroundColor: "#00F",
+      textAlign: "center",
+      paddingTop: 50,
+      paddingBottom: 50
+    }
+  }
 
   return (
-    <div>
+    <div
+      style={styles.root}
+    >
       <h1>{count}</h1>
-      <br/>
+      <br />
       {/* JSX */}
-      <button onClick={()=>setCount(count+1)}>ADD</button>
+      <button onClick={() => setCount(count + 1)}>ADD</button>
+      <br />
+      {/* JSX */}
+      <button onClick={() => setCount(count - 1)}>REMOCE</button>
     </div>
-  )
+  );
 }
