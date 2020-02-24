@@ -33,7 +33,7 @@ npm i express body-parser fs-extra formidable cors bcryptjs rand-token jsonwebto
 
 # Page Components
 // In Pages
-npx crcf -f LoginPage
+npx crcf -f LoginPage 
 npx crcf -f RegisterPage
 npx crcf -f ReportPage
 npx crcf -f StockPage
