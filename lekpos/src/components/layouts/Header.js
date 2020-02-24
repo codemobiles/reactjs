@@ -50,7 +50,7 @@ export default function PermanentDrawerLeft() {
             Permanent drawer
           </Typography>
         </Toolbar>
-      </AppBar>
+      </AppBar>    
     </div>
   );
 }
