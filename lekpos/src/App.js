@@ -12,7 +12,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-
+import Header from "./components/layouts/Header";
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -43,14 +43,8 @@ export default function PermanentDrawerLeft() {
 
   return (
     <div className={classes.root}>
-      <CssBaseline />
-      <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar>
-          <Typography variant="h6" noWrap>
-            Permanent drawer
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      <Header/>
+      
       <Drawer
         className={classes.drawer}
         variant="permanent"
@@ -105,6 +99,7 @@ export default function PermanentDrawerLeft() {
           accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam ultrices sagittis orci a.
         </Typography>
       </main>
+    
     </div>
   );
 }
