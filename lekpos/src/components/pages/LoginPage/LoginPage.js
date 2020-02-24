@@ -3,7 +3,7 @@ import { Formik } from "formik";
 
 const showForm = (props) => {
   return (
-    <form>
+    <form onSubmit={props.handleSubmit}>
       <input type="text" name="username" placeholder="Username" value={props.values.username} />
       <br />
       <input type="text" name="password" placeholder="Password" value={props.values.password}/>
