@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./App.css"
 
 export default function App() {
   const [count, setCount] = useState(0);
@@ -19,7 +20,7 @@ export default function App() {
 
   return (
     <div
-      style={styles.root}
+      className="Root"
     >
       <h1>{count}</h1>
       <br />
