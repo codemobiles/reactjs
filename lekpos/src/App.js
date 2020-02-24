@@ -73,6 +73,7 @@ export default function PermanentDrawerLeft() {
           ))}
         </List>
       </Drawer>
+     
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <Typography paragraph>
