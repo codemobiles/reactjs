@@ -89,9 +89,8 @@ export default props => {
       <CardMedia
         component="img"
         alt="Contemplative Reptile"
-        height="200"
-        
-        image="/banner_home.gif"
+        height="200"        
+        image={`${process.env.PUBLIC_URL}/images/authen_header.jpg`}
         title="Contemplative Reptile"
       />
       <CardContent>
@@ -101,6 +100,7 @@ export default props => {
         <Formik
           initialValues={{ username: "", password: "" }}
           onSubmit={(values, { setSubmitting }) => {
+            alert(JSON.stringify(values))
             setSubmitting(false);
           }}
         >
