@@ -95,7 +95,7 @@ export default props => {
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="h2">
-          Login
+          Login <CircularProgress size={30} style={{color: "#F0F"}}/>
         </Typography>
         <Formik
           initialValues={{ username: "", password: "" }}
