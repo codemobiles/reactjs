@@ -1,3 +1,6 @@
+
+// npm i express body-parser fs-extra formidable cors bcryptjs rand-token jsonwebtoken mongoose mongoose-sequence onesignal-node
+
 const express = require("express");
 const app = express();
 
