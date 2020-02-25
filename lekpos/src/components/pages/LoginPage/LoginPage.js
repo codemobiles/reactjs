@@ -67,6 +67,8 @@ export default props => {
           autoComplete="current-password"
         />
       
+        {/* Ternery condition */}
+        {isSubmitting && <CircularProgress size={30} style={{color: "#F0F"}}/>} 
 
         <Button
           type="submit"
@@ -95,13 +97,13 @@ export default props => {
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="h2">
-          Login <CircularProgress size={30} style={{color: "#F0F"}}/>
+          Login 
         </Typography>
         <Formik
           initialValues={{ username: "", password: "" }}
           onSubmit={(values, { setSubmitting }) => {
-            alert(JSON.stringify(values))
-            setSubmitting(false);
+            // alert(JSON.stringify(values))
+            // setSubmitting(false);
           }}
         >
           {props => showForm(props)}
