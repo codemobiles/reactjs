@@ -17,6 +17,15 @@ import Menu from "./components/layouts/Menu";
 import LoginPage from "./components/pages/LoginPage/LoginPage";
 const drawerWidth = 240;
 
+
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch
+} from "react-router-dom";
+
+
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex"
