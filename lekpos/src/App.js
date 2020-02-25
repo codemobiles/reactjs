@@ -17,14 +17,12 @@ import Menu from "./components/layouts/Menu";
 import LoginPage from "./components/pages/LoginPage/LoginPage";
 const drawerWidth = 240;
 
-
 import {
   BrowserRouter as Router,
   Route,
   Redirect,
   Switch
 } from "react-router-dom";
-
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -53,13 +51,15 @@ export default function PermanentDrawerLeft() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <Header />
-      <Menu />
-      <main className={classes.content}>
-        <div className={classes.toolbar} />
-        <LoginPage />
-      </main>
-    </div>
+    <Router>
+      <div className={classes.root}>
+        <Header />
+        <Menu />
+        <main className={classes.content}>
+          <div className={classes.toolbar} />
+          <LoginPage />
+        </main>
+      </div>
+    </Router>
   );
 }
