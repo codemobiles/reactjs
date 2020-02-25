@@ -30,7 +30,6 @@ const useStyles = makeStyles(theme => ({
 
 export default props => {
   const classes = useStyles();
-  
 
   const showForm = ({
     values,
@@ -66,9 +65,13 @@ export default props => {
           id="password"
           autoComplete="current-password"
         />
-      
-        {/* Ternery condition */}
-        {isSubmitting && <CircularProgress size={30} style={{color: "#F0F"}}/>} 
+
+        <div style={{textAlign: "center"}}>
+          {/* Ternery condition */}
+          {isSubmitting && (
+            <CircularProgress size={30} style={{ color: "#F0F" }} />
+          )}
+        </div>
 
         <Button
           type="submit"
@@ -80,8 +83,7 @@ export default props => {
         >
           Sign In
         </Button>
-        <Grid container justify="flex-end">          
-        </Grid>
+        <Grid container justify="flex-end"></Grid>
       </form>
     );
   };
@@ -91,13 +93,13 @@ export default props => {
       <CardMedia
         component="img"
         alt="Contemplative Reptile"
-        height="200"        
+        height="200"
         image={`${process.env.PUBLIC_URL}/images/authen_header.jpg`}
         title="Contemplative Reptile"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="h2">
-          Login 
+          Login
         </Typography>
         <Formik
           initialValues={{ username: "", password: "" }}
