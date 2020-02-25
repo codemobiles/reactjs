@@ -5,7 +5,7 @@ const express = require("express");
 const app = express();
 
 app.get("/login", (req, res) => {
-  res.end("Login 555");
+  res.json({result: "login", message: req.query});
 });
 
 app.get("/register", (req, res) => {
