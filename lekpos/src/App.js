@@ -22,7 +22,8 @@ import StockCreatePage from "./components/pages/StockCreatePage/StockCreatePage"
 import StockEditPage from "./components/pages/StockEditPage/StockEditPage";
 import ReportPage from "./components/pages/ReportPage/ReportPage";
 import TransactionPage from "./components/pages/TransactionPage/TransactionPage";
-
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
 
 import {
   BrowserRouter as Router,
@@ -31,27 +32,21 @@ import {
   Switch
 } from "react-router-dom";
 
-const drawerWidth = 240;
-
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex"
   },
-  appBar: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth
+  toolbar: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    padding: theme.spacing(0, 1),
+    ...theme.mixins.toolbar
   },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0
-  },
-  drawerPaper: {
-    width: drawerWidth
-  },
-  toolbar: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
+    display: "flex",
+    justifyContent: "center",
     padding: theme.spacing(3)
   }
 }));
@@ -65,16 +60,16 @@ export default function PermanentDrawerLeft() {
         <div className={classes.root}>
           <Header />
           <Menu />
-          <main className={classes.content}>
+          <Container className={classes.content} maxWidth={false}>
             <div className={classes.toolbar} />
-            <Route path="/login" component={LoginPage}/>
-            <Route path="/register" component={RegisterPage}/>
+            <Route path="/login" component={LoginPage} />
+            <Route path="/register" component={RegisterPage} />
             <Route
-                exact={true}
-                path="/"
-                component={() => <Redirect to="/login" />}
-              />
-          </main>
+              exact={true}
+              path="/"
+              component={() => <Redirect to="/login" />}
+            />
+          </Container>
         </div>
       </Switch>
     </Router>
