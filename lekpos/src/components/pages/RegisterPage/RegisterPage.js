@@ -14,7 +14,7 @@ import { useSelector, useDispatch } from "react-redux";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Alert from "@material-ui/lab/Alert";
 import axios from "axios";
-import * as loginActions from "./../../../actions/login.action";
+import * as registerActions from "./../../../actions/register.action";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
 export default props => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const loginReducer = useSelector(({ loginReducer }) => loginReducer);
+  const registerReducer = useSelector(({ registerReducer }) => registerReducer);
 
   const showForm = ({
     values,
@@ -76,7 +76,7 @@ export default props => {
             <CircularProgress size={30} style={{ color: "#F0F" }} />
           )}
 
-          {loginReducer.result && JSON.stringify(loginReducer.result)}
+          {registerReducer.result && JSON.stringify(registerReducer.result)}
         </div>
 
         <Button
@@ -120,7 +120,7 @@ export default props => {
         <Formik
           initialValues={{ username: "", password: "" }}
           onSubmit={(values, { setSubmitting }) => {
-            dispatch(loginActions.login(values));
+            dispatch(registerActions.register(values));
 
             axios
               .post("http://localhost:8081/api/v2/login", values)
