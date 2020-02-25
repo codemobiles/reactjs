@@ -15,13 +15,14 @@ import MailIcon from "@material-ui/icons/Mail";
 import Header from "./components/layouts/Header";
 import Menu from "./components/layouts/Menu";
 import LoginPage from "./components/pages/LoginPage/LoginPage";
+import RegisterPage from "./components/pages/RegisterPage/RegisterPage";
+
 import {
   BrowserRouter as Router,
   Route,
   Redirect,
   Switch
 } from "react-router-dom";
-
 
 const drawerWidth = 240;
 
@@ -59,7 +60,8 @@ export default function PermanentDrawerLeft() {
           <Menu />
           <main className={classes.content}>
             <div className={classes.toolbar} />
-            <LoginPage />
+            <Route path="/login" component={LoginPage}/>
+            <Route path="/register" component={RegisterPage}/>
           </main>
         </div>
       </Switch>
