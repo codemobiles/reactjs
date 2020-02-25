@@ -7,7 +7,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Link from "@material-ui/core/Link";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, NavLink } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import { Formik } from "formik";
 import { useSelector, useDispatch } from "react-redux";
@@ -66,7 +66,7 @@ export default props => {
           autoComplete="current-password"
         />
 
-        <div style={{textAlign: "center"}}>
+        <div style={{ textAlign: "center" }}>
           {/* Ternery condition */}
           {isSubmitting && (
             <CircularProgress size={30} style={{ color: "#F0F" }} />
@@ -83,6 +83,17 @@ export default props => {
         >
           Sign In
         </Button>
+
+        <Button
+          type="button"
+          fullWidth
+          variant="text"
+          component={RouterLink}
+          to="/register"
+        >
+          Register
+        </Button>
+
         <Grid container justify="flex-end"></Grid>
       </form>
     );
