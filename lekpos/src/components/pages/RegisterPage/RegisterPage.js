@@ -13,6 +13,7 @@ import { Formik } from "formik";
 import { useSelector, useDispatch } from "react-redux";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Alert from "@material-ui/lab/Alert";
+import axios from "axios"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -114,6 +115,11 @@ export default props => {
         <Formik
           initialValues={{ username: "", password: "" }}
           onSubmit={(values, { setSubmitting }) => {
+
+
+            axios.post("http://localhost:8081/api/v2/login", values).then(response=>{
+              alert(JSON.stringify(response.data))
+            })
             // alert(JSON.stringify(values))
             // setSubmitting(false);
           }}

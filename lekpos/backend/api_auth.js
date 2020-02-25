@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
-router.get("/login", (req, res) => {
-  res.json({ result: "login" });
+router.post("/login", (req, res) => {
+  res.json({ result: "login", message: req.body });
 });
 
 module.exports = router;
