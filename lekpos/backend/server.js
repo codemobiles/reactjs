@@ -1,5 +1,5 @@
-
-// npm i express body-parser fs-extra formidable cors bcryptjs rand-token jsonwebtoken mongoose mongoose-sequence onesignal-node
+// yarn add express body-parser fs-extra formidable cors bcryptjs rand-token jsonwebtoken mongoose mongoose-sequence onesignal-node
+// npx nodemon server.js
 
 const express = require("express");
 const app = express();
