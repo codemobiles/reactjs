@@ -90,7 +90,8 @@ export default props => {
         component="img"
         alt="Contemplative Reptile"
         height="200"
-        image={`${process.env.PUBLIC_URL}/images/authen_header.jpg`}
+        
+        image="/banner_home.gif"
         title="Contemplative Reptile"
       />
       <CardContent>
