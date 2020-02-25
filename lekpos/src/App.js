@@ -16,6 +16,13 @@ import Header from "./components/layouts/Header";
 import Menu from "./components/layouts/Menu";
 import LoginPage from "./components/pages/LoginPage/LoginPage";
 import RegisterPage from "./components/pages/RegisterPage/RegisterPage";
+import ShopPage from "./components/pages/ShopPage/ShopPage";
+import StockPage from "./components/pages/StockPage/StockPage";
+import StockCreatePage from "./components/pages/StockCreatePage/StockCreatePage";
+import StockEditPage from "./components/pages/StockEditPage/StockEditPage";
+import ReportPage from "./components/pages/ReportPage/ReportPage";
+import TransactionPage from "./components/pages/TransactionPage/TransactionPage";
+
 
 import {
   BrowserRouter as Router,
