@@ -13,7 +13,8 @@ import { Formik } from "formik";
 import { useSelector, useDispatch } from "react-redux";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Alert from "@material-ui/lab/Alert";
-import axios from "axios"
+import axios from "axios";
+import * as loginActions from "./../../../actions/login.action";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -31,6 +32,8 @@ const useStyles = makeStyles(theme => ({
 
 export default props => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const loginReducer = useSelector(({ loginReducer }) => loginReducer);
 
   const showForm = ({
     values,
@@ -72,6 +75,8 @@ export default props => {
           {isSubmitting && (
             <CircularProgress size={30} style={{ color: "#F0F" }} />
           )}
+
+          {loginReducer.result && JSON.stringify(loginReducer.result)}
         </div>
 
         <Button
@@ -115,11 +120,13 @@ export default props => {
         <Formik
           initialValues={{ username: "", password: "" }}
           onSubmit={(values, { setSubmitting }) => {
+            dispatch(loginActions.login(values));
 
-
-            axios.post("http://localhost:8081/api/v2/login", values).then(response=>{
-              alert(JSON.stringify(response.data))
-            })
+            axios
+              .post("http://localhost:8081/api/v2/login", values)
+              .then(response => {
+                alert(JSON.stringify(response.data));
+              });
             // alert(JSON.stringify(values))
             // setSubmitting(false);
           }}
