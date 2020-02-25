@@ -13,4 +13,13 @@ export const setLoginStateToSuccess = (payload) => ({
     payload
 })
 
+export const login = (value)=>{
+    return dispatch=>{
+        dispatch(setLoginStateToFetching())
+        setTimeout(()=>{
+            dispatch(setLoginStateToSuccess({result: "ok", value}))
+        },1000)
+    }
+}
+
 
