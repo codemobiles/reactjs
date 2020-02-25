@@ -4,13 +4,9 @@
 const express = require("express");
 const app = express();
 
-app.get("/login", (req, res) => {
-  res.json({result: "login", message: req.query});
-});
 
-app.get("/register", (req, res) => {
-  res.end("RRRR 555");
-});
+app.use("/api/v2", require("./api"))
+
 
 app.listen(8081, () => {
   console.log("Running..");
