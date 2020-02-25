@@ -7,6 +7,7 @@ const bodyParser = require("body-parser");
 
 app.use(express.static(__dirname + "/uploaded"));
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.use("/api/v2", require("./api"));
 
