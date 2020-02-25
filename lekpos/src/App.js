@@ -69,6 +69,11 @@ export default function PermanentDrawerLeft() {
             <div className={classes.toolbar} />
             <Route path="/login" component={LoginPage}/>
             <Route path="/register" component={RegisterPage}/>
+            <Route
+                exact={true}
+                path="/"
+                component={() => <Redirect to="/login" />}
+              />
           </main>
         </div>
       </Switch>
