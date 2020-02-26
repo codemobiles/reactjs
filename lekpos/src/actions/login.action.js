@@ -7,7 +7,6 @@ import {
 import { httpClient } from "./../utils/HttpClient";
 import jwt from "jsonwebtoken";
 
-
 export const setLoginStateToFetching = () => ({
   type: LOGIN_FETCHING
 });
@@ -25,7 +24,7 @@ export const setLoginStateToSuccess = payload => ({
 export const login = (value, history) => {
   return async dispatch => {
     try {
-      dispatch(setLoginStateToFetch()); // fetching
+      dispatch(setLoginStateToFetching()); // fetching
       let result = await httpClient.post(server.LOGIN_URL, value);
       if (result.data.result === "ok") {
         const { token, refreshToken } = result.data;
