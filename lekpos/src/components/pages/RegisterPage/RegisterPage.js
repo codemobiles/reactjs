@@ -33,8 +33,7 @@ const useStyles = makeStyles(theme => ({
 export default props => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const registerReducer = useSelector(({registerReducer}) => {registerReducer});
-
+  const registerReducer = useSelector(({ registerReducer }) => registerReducer);
 
   const showForm = ({
     values,
