@@ -126,6 +126,7 @@ export default props => {
         <Formik
           initialValues={{ username: "", password: "" }}
           onSubmit={(values, { setSubmitting }) => {
+            setSubmitting(false)
             dispatch(registerActions.register(values, props.history));
           }}
         >
