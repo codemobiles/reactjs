@@ -1,15 +1,12 @@
+const { verify } = require("./verify");
+
 const express = require("express");
 const router = express.Router();
 
+
 router.get(
   "/product",
-  (req, res, next) => {
-    if (req.query.token == "ilovedog") {
-      next();
-    } else {
-      res.send("ads");
-    }
-  },
+  verify,
   (req, res) => {
     res.json({ result: "product" });
   }
