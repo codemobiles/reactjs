@@ -54,3 +54,19 @@ export const login = (value, history) => {
     }
   };
 };
+
+export const isLoggedIn = ()=>{
+  let token = localStorage.getItem(server.TOKEN_KEY);
+  if (token) {
+    var decodedToken = jwt.decode(token, { complete: true });
+    var dateNow = new Date();
+
+    if (decodedToken.exp < dateNow.getTime()) {
+      return false;
+    } else {
+      return true;
+    }
+  } else {
+    return false;
+  }
+}
