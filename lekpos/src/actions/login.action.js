@@ -20,6 +20,10 @@ export const setLoginStateToSuccess = payload => ({
   payload
 });
 
+export const setLoginStateToLogout = () => ({
+  type: LOGOUT
+});
+
 export const logout = history => {
   return dispatch => {
     localStorage.removeItem(server.TOKEN_KEY);
