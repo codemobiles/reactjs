@@ -54,6 +54,36 @@ const useStyles = makeStyles(theme => ({
 export default function PermanentDrawerLeft() {
   const classes = useStyles();
 
+
+  // Protected Route
+  const SecuredRoute = ({ component: Component, ...rest }) => (
+    <Route
+      {...rest}
+      render={props =>
+        // ternary condition
+        loginActions.isLoggedIn() ? (
+          <Component {...props} />
+        ) : (
+          <Redirect to="/login" />
+        )
+      }
+    />
+  );
+
+  const LoginRoute = ({ component: Component, ...rest }) => (
+    <Route
+      {...rest}
+      render={props =>
+        // ternary condition
+        loginActions.isLoggedIn() ? (
+          <Redirect to="/stock" />
+        ) : (
+          <LoginPage {...props} />
+        )
+      }
+    />
+  );
+
   return (
     <Router>
       <Switch>
