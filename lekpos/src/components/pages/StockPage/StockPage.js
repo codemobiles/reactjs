@@ -1,22 +1,25 @@
 import React from "react";
 import MaterialTable, { MTableToolbar } from "material-table";
+import * as stockActions from "./../../../actions/stock.action";
+import { useDispatch, useSelector } from "react-redux";
 
 const StockPage = () => {
+  const dispatch = useDispatch();
+  const stockReducer = useSelector(({ stockReducer }) => stockReducer);
+
+  React.useEffect(() => {
+    // Intailization
+    dispatch(stockActions.getProducts())
+
+  }, []);
+
   return (
     <div style={{ marginTop: 100 }}>
-      <ul>
-        {["Angular", "React", "Vue", "Android", "iOS"].map(item => (
-          <li>{item}</li>
-        ))}
-      </ul>
+   
 
       <MaterialTable
         title="Simple Action Preview"
-        data={[
-          { name: "Angular", price: 100 },
-          { name: "Vue", price: 10 },
-          { name: "React", price: 5 }
-        ]}
+        data={stockReducer.result ? stockReducer.result : []}
         columns={[
           {
             title: "Name",
