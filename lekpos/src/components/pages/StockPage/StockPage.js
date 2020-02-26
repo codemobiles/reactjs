@@ -18,6 +18,7 @@ import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import NewReleasesIcon from "@material-ui/icons/NewReleases";
 import AssignmentReturnIcon from "@material-ui/icons/AssignmentReturn";
 import StarIcon from "@material-ui/icons/Star";
+import StockCard from "./../../fragments/StockCard/StockCard";
 
 const useStyles = makeStyles(theme => ({
   root: {
