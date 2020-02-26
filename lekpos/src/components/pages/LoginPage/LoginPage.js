@@ -7,10 +7,11 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Link from "@material-ui/core/Link";
-import { Link as RouterLink, NavLink } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import { Formik } from "formik";
 import { useSelector, useDispatch } from "react-redux";
+import * as loginActions from "./../../../actions/login.action";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Alert from "@material-ui/lab/Alert";
 
@@ -30,7 +31,9 @@ const useStyles = makeStyles(theme => ({
 
 export default props => {
   const classes = useStyles();
-
+  const dispatch = useDispatch();
+  const loginReducer = useSelector(({ loginReducer }) => loginReducer);
+  
   const showForm = ({
     values,
     handleChange,
@@ -115,8 +118,8 @@ export default props => {
         <Formik
           initialValues={{ username: "", password: "" }}
           onSubmit={(values, { setSubmitting }) => {
-            // alert(JSON.stringify(values))
-            // setSubmitting(false);
+            setSubmitting(false);
+            dispatch(loginActions.login(values, props.history));
           }}
         >
           {props => showForm(props)}

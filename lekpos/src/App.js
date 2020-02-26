@@ -64,6 +64,8 @@ export default function PermanentDrawerLeft() {
             <div className={classes.toolbar} />
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={RegisterPage} />
+            <Route path="/stock" component={StockPage} />
+
             <Route
               exact={true}
               path="/"
