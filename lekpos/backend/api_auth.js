@@ -5,10 +5,37 @@ var bcrypt = require("bcryptjs");
 const jwt = require("./jwt");
 const randtoken = require("rand-token"); // yarn add rand-token
 
-router.post("/login", (req, res) => {
-  res.json({ result: "login", message: req.body });
-});
+const refreshTokens = {};
 
+router.post("/login", async (req, res) => {
+  let doc = await Users.findOne({ username: req.body.username });
+  if (doc) {
+    if (bcrypt.compareSync(req.body.password, doc.password)) {
+      const payload = {
+        id: doc._id,
+        level: doc.level,
+        username: doc.username
+      };
+
+      let token = jwt.sign(payload, "10000"); // 5 min 300000
+      const refreshToken = randtoken.uid(256);
+      refreshTokens[refreshToken] = req.body.username;
+
+      res.json({
+        result: "ok",
+        token,
+        refreshToken,
+        message: "Login successfully"
+      });
+    } else {
+      // Invalid password
+      res.json({ result: "nok", message: "Invalid password" });
+    }
+  } else {
+    // Invalid username
+    res.json({ result: "nok", message: "Invalid username" });
+  }
+});
 
 router.post("/register", async (req, res) => {
   try {
@@ -19,6 +46,5 @@ router.post("/register", async (req, res) => {
     res.json({ result: "nok", message: err.errmsg });
   }
 });
-
 
 module.exports = router;
