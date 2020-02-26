@@ -104,7 +104,7 @@ const Header = props => {
   };
 
   const logout = () => {
-    // dispatch(loginActions.logout(props.history));
+    dispatch(loginActions.logout(props.history));
     handleMenuClose();
   };
 

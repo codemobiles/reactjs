@@ -20,6 +20,15 @@ export const setLoginStateToSuccess = payload => ({
   payload
 });
 
+export const logout = history => {
+  return dispatch => {
+    localStorage.removeItem(server.TOKEN_KEY);
+    localStorage.removeItem(server.REFRESH_TOKEN_KEY);
+    dispatch(setLoginStateToLogout());
+    history.push("/login");
+  };
+};
+
 // Called by Login Component
 export const login = (value, history) => {
   return async dispatch => {
