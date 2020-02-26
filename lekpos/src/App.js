@@ -24,6 +24,7 @@ import ReportPage from "./components/pages/ReportPage/ReportPage";
 import TransactionPage from "./components/pages/TransactionPage/TransactionPage";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import * as loginActions from "./actions/login.action";
 
 import {
   BrowserRouter as Router,
@@ -53,7 +54,6 @@ const useStyles = makeStyles(theme => ({
 
 export default function PermanentDrawerLeft() {
   const classes = useStyles();
-
 
   // Protected Route
   const SecuredRoute = ({ component: Component, ...rest }) => (

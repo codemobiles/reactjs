@@ -56,6 +56,7 @@ export const login = (value, history) => {
 };
 
 export const isLoggedIn = ()=>{
+  debugger
   let token = localStorage.getItem(server.TOKEN_KEY);
   if (token) {
     var decodedToken = jwt.decode(token, { complete: true });
