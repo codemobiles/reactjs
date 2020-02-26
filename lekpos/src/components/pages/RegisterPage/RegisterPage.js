@@ -70,6 +70,12 @@ export default props => {
           autoComplete="current-password"
         />
 
+        {registerReducer.isError && (
+          <Alert severity="error" style={{ marginBottom: 8 }}>
+            Invalid account!
+          </Alert>
+        )}
+
         <div style={{ textAlign: "center" }}>
           {/* Ternery condition */}
           {isSubmitting && (
@@ -120,7 +126,7 @@ export default props => {
         <Formik
           initialValues={{ username: "", password: "" }}
           onSubmit={(values, { setSubmitting }) => {
-            dispatch(registerActions.register(values));
+            dispatch(registerActions.register(values, props.history));
 
             axios
               .post("http://localhost:8081/api/v2/login", values)
