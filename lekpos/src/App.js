@@ -25,6 +25,7 @@ import TransactionPage from "./components/pages/TransactionPage/TransactionPage"
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import * as loginActions from "./actions/login.action";
+import { useDispatch, useSelector } from "react-redux";
 
 import {
   BrowserRouter as Router,
@@ -52,8 +53,9 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function PermanentDrawerLeft() {
+export default function App() {
   const classes = useStyles();
+  useSelector(({ loginReducer }) => loginReducer);
 
   // Protected Route
   const SecuredRoute = ({ component: Component, ...rest }) => (
@@ -88,13 +90,13 @@ export default function PermanentDrawerLeft() {
     <Router>
       <Switch>
         <div className={classes.root}>
-          <Header />
-          <Menu />
+          {loginActions.isLoggedIn() && <Header />}
+          {loginActions.isLoggedIn() && <Menu />}
           <Container className={classes.content} maxWidth={false}>
             <div className={classes.toolbar} />
-            <Route path="/login" component={LoginPage} />
+            <LoginRoute path="/login" component={LoginPage} />
             <Route path="/register" component={RegisterPage} />
-            <Route path="/stock" component={StockPage} />
+            <SecuredRoute path="/stock" component={StockPage} />
 
             <Route
               exact={true}
