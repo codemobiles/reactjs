@@ -1,4 +1,9 @@
-import { LOGIN_FETCHING, LOGIN_FAILED, LOGIN_SUCCESS } from "../constants";
+import {
+  LOGIN_FETCHING,
+  LOGIN_FAILED,
+  LOGIN_SUCCESS,
+  server
+} from "../constants";
 
 export const setLoginStateToFetching = () => ({
   type: LOGIN_FETCHING
@@ -13,16 +18,23 @@ export const setLoginStateToSuccess = payload => ({
   payload
 });
 
-export const login = value => {
-  return dispatch => {
-    dispatch(setLoginStateToFetching());
-    setTimeout(() => {
-      dispatch(
-        setLoginStateToSuccess({
-          result: "ok",
-          data: ["angular", "react", "vue"]
-        })
-      );
-    }, 1000);
+// Called by Login Component
+export const login = (value, history) => {
+  return async dispatch => {
+    try {
+      dispatch(setLoginStateToFetch()); // fetching
+      let result = await httpClient.post(server.LOGIN_URL, value);
+      if (result.data.result === "ok") {
+        const { token, refreshToken } = result.data;
+        localStorage.setItem(server.TOKEN_KEY, token);
+        localStorage.setItem(server.REFRESH_TOKEN_KEY, refreshToken);
+        dispatch(setLoginStateToSuccess(result));
+        history.push("/stock");
+      } else {
+        dispatch(setLoginStateToFailed(result));
+      }
+    } catch (error) {
+      dispatch(setLoginStateToFailed({ data: { message: error } }));
+    }
   };
 };
