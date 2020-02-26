@@ -2,6 +2,7 @@ import {
   LOGIN_FETCHING,
   LOGIN_FAILED,
   LOGIN_SUCCESS,
+  LOGOUT,
   server
 } from "../constants";
 import { httpClient } from "./../utils/HttpClient";
