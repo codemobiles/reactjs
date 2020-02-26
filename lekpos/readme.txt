@@ -82,3 +82,5 @@ npx pm2 start server/0 --watch
 npx pm2 delete server/0
 
 https://www.youtube.com/watch?v=e1GY-x-sX_E&list=PLjPfp4Ph3gBqx47PXPdBpWcK16HVxtxF5
+
+http://travistidwell.com/jsencrypt/demo/
