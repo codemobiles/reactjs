@@ -4,7 +4,7 @@ const router = express.Router();
 const Products = require("./models/product_schema");
 
 router.get("/product", jwt.verify, async (req, res) => {
-  let doc = await Products.find({})
+  let doc = await Products.find({}).sort({ created: -1 });
   res.json(doc);
 });
 
