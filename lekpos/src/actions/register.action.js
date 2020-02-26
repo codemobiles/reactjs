@@ -1,8 +1,11 @@
 import {
   REGISTER_FETCHING,
   REGISTER_FAILED,
-  REGISTER_SUCCESS
+  REGISTER_SUCCESS,
+  server
 } from "../constants";
+
+import httpClient from "./../utils/HttpClient";
 
 export const setRegisterStateToFetching = () => ({
   type: REGISTER_FETCHING
@@ -17,16 +20,15 @@ export const setRegisterStateToSuccess = payload => ({
   payload
 });
 
-export const register = value => {
-  return dispatch => {
+export const register = (values, history) => {
+  return async dispatch => {
     dispatch(setRegisterStateToFetching());
-    setTimeout(() => {
-      dispatch(
-        setRegisterStateToSuccess({
-          result: "ok",
-          data: ["angular", "react", "vue"]
-        })
-      );
-    }, 1000);
+    const response = await httpClient.post(server.REGISTER_URL, values);
+    if (response.data.result == "ok") {
+      dispatch(setRegisterStateToSuccess(response.data));
+      history.push("/login");
+    } else {
+      dispatch(setRegisterStateToFailed());
+    }
   };
 };
