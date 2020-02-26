@@ -4,10 +4,10 @@ const router = express.Router();
 router.get(
   "/product",
   (req, res, next) => {
-    if (req.query.token == "1234") {
+    if (req.query.token == "ilovedog") {
       next();
     } else {
-      res.end("No Authorized");
+      res.send("ads");
     }
   },
   (req, res) => {
