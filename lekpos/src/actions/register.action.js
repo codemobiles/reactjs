@@ -5,7 +5,7 @@ import {
   server
 } from "../constants";
 
-import httpClient from "./../utils/HttpClient";
+import {httpClient} from "./../utils/HttpClient";
 
 export const setRegisterStateToFetching = () => ({
   type: REGISTER_FETCHING

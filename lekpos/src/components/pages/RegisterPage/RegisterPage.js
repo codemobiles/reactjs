@@ -127,14 +127,6 @@ export default props => {
           initialValues={{ username: "", password: "" }}
           onSubmit={(values, { setSubmitting }) => {
             dispatch(registerActions.register(values, props.history));
-
-            axios
-              .post("http://localhost:8081/api/v2/login", values)
-              .then(response => {
-                alert(JSON.stringify(response.data));
-              });
-            // alert(JSON.stringify(values))
-            // setSubmitting(false);
           }}
         >
           {props => showForm(props)}
