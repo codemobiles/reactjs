@@ -33,7 +33,7 @@ export default props => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const loginReducer = useSelector(({ loginReducer }) => loginReducer);
-  
+
   const showForm = ({
     values,
     handleChange,
@@ -68,6 +68,12 @@ export default props => {
           id="password"
           autoComplete="current-password"
         />
+
+        {loginReducer.isError && (
+          <Alert severity="error" style={{ marginBottom: 8 }}>
+            Invalid username or password!
+          </Alert>
+        )}
 
         <div style={{ textAlign: "center" }}>
           {/* Ternery condition */}
