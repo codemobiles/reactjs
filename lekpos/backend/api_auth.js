@@ -17,7 +17,7 @@ router.post("/login", async (req, res) => {
         username: doc.username
       };
 
-      let token = jwt.sign(payload, "10000"); // 5 min 300000
+      let token = jwt.sign(payload, "10000000"); // 5 min 300000
       const refreshToken = randtoken.uid(256);
       refreshTokens[refreshToken] = req.body.username;
 
