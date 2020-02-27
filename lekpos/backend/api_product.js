@@ -13,6 +13,13 @@ router.get("/product", jwt.verify, async (req, res) => {
   res.json(doc);
 });
 
+router.post("/product", (req, res)=>{
+  let form  = new formidable.IncomingForm()
+  form.parse(req, (error, fields, files)=>{
+    res.json({error, fields, files})
+  })
+})
+
 
 
 module.exports = router;
