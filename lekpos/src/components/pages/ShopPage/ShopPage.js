@@ -91,67 +91,14 @@ export default props => {
     return (
       <Container style={{ height: "100%", overflowY: "scroll" }}>
         <Grid container spacing={1} className={classes.productContainer}>
-          {result !== null &&
-            result.map((item, i) => (
-              <Grid
-                key={i}
-                item
-                xs={3}
-                onClick={() => dispatch(shopActions.addOrder(item))}
-                style={{ cursor: "pointer" }}
-              >
-                <Card>
-                  <CardActionArea>
-                    <CardMedia
-                      component="img"
-                      alt="Contemplative Reptile"
-                      height="200"
-                      image={`${imageUrl}/images/${item.image}`}
-                      title="Contemplative Reptile"
-                    />
-                    <CardContent>
-                      <Typography noWrap gutterBottom>
-                        {item.name}
-                      </Typography>
-                      <Grid
-                        container
-                        style={{
-                          height: 24,
-                          display: "flex",
-                          flexDirection: "row",
-                          alignitem: "center"
-                        }}
-                      >
-                        <div style={{ flexGrow: 1 }}>
-                          <Typography
-                            variant="body2"
-                            color="textSecondary"
-                            component="p"
-                          >
-                            D{item.product_id} / ฿{item.price}
-                          </Typography>
-                        </div>
-                        {isSelectedItem(item) && (
-                          <div
-                            style={{ display: "flex", flexDirection: "row" }}
-                          >
-                            <Typography
-                              style={{ marginRight: 4 }}
-                              variant="body1"
-                              color="textPrimary"
-                            >
-                              X{item.qty}
-                            </Typography>
-
-                            <StarsIcon className={classes.star} />
-                          </div>
-                        )}
-                      </Grid>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              </Grid>
-            ))}
+          {result &&
+            result.map(item => {
+              return (
+                <Grid item xs={3}>
+                  <Card>{item.name}</Card>
+                </Grid>
+              );
+            })}
         </Grid>
       </Container>
     );
