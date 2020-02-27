@@ -179,7 +179,7 @@ export default props => {
     <div className={classes.root}>
       {/* Summary Cards */}
       <div>
-        <StockCard />
+        <StockCard title="TOTAL" subtitle="200"/>
       </div>
       <MaterialTable
         id="root_stock"
