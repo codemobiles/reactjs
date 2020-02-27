@@ -1,14 +1,15 @@
 import * as stockActions from "./../../../actions/stock.action";
 
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 
 import { TextField } from "formik-material-ui";
+import { imageUrl } from "./../../../constants";
 
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -31,15 +32,13 @@ const useStyles = makeStyles(theme => ({
 export default props => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const stockReducer = useSelector(({ stockReducer }) => stockReducer);
 
   useEffect(() => {
-    // Initial code   
-    const {id} = props.match.params
-    dispatch(stockActions.getProductById(id))
-  }, [])
-
-  
-
+    // Initial code
+    const { id } = props.match.params;
+    dispatch(stockActions.getProductById(id));
+  }, []);
 
   const showForm = ({ values, setFieldValue, errors }) => {
     return (
@@ -125,6 +124,13 @@ export default props => {
   const showPreviewImage = values => {
     if (values.file_obj) {
       return <img src={values.file_obj} style={{ height: 100 }} />;
+    } else if (values.image) {
+      return (
+        <img
+          src={`${imageUrl}/images/${values.image}`}
+          style={{ height: 100 }}
+        />
+      );
     }
   };
 
@@ -141,7 +147,12 @@ export default props => {
             if (!values.price) errors.price = "Enter price";
             return errors;
           }}
-          initialValues={{ name: "", stock: 10, price: 90 }}
+          enableReinitialize
+          initialValues={
+            stockReducer.result
+              ? stockReducer.result
+              : { name: "", stock: 0, price: 0 }
+          }
           onSubmit={(values, { setSubmitting }) => {
             let formData = new FormData();
             formData.append("name", values.name);
