@@ -32,7 +32,7 @@ export default props => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  const showForm = ({ values, setFieldValue }) => {
+  const showForm = ({ values, setFieldValue, errors }) => {
     return (
       <Form>
         <Card className={classes.card}>
@@ -40,6 +40,8 @@ export default props => {
             <Typography gutterBottom variant="h3">
               Create Stock
             </Typography>
+
+            {errors && JSON.stringify(errors)}
 
             <Field
               className={classes.field}
@@ -125,7 +127,7 @@ export default props => {
         <Formik
           validate={values => {
             let errors = {};
-            if (!values.name) errors.name = "Enter name";
+            if (!values.name) errors.name = "กรุณาใส่ชื่อก่อน";
             if (!values.stock) errors.stock = "Enter stock";
             if (!values.price) errors.price = "Enter price";
             return errors;
