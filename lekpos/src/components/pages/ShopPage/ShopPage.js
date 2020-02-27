@@ -110,11 +110,29 @@ export default props => {
                         </Typography>
 
                         <Grid container>
-                          <Grid item>
+                          <Grid item style={{ flexGrow: 1 }}>
                             <Typography variant="body1" noWrap>
-                            D{item.product_id} / ฿{item.price}
+                              D{item.product_id} / ฿{item.price}
                             </Typography>
                           </Grid>
+
+                          {/* Select Indicator Begin */}
+                          <Grid item>
+                            <div
+                              style={{ display: "flex", flexDirection: "row" }}
+                            >
+                              <Typography
+                                style={{ marginRight: 4 }}
+                                variant="body1"
+                                color="textPrimary"
+                              >
+                                X{item.qty}
+                              </Typography>
+
+                              <StarsIcon className={classes.star} />
+                            </div>
+                          </Grid>
+                          {/* Select Indicator End */}
                         </Grid>
                       </CardContent>
                     </CardActionArea>
