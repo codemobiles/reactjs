@@ -177,15 +177,45 @@ export default props => {
 
   return (
     <div className={classes.root}>
-      {/* Summary Cards */}
-      <div>
-        <StockCard
-          title="TOTAL"
-          subtitle="200"
-          icon={AddShoppingCartIcon}
-          color="#F00"
-        />
-      </div>
+      {/* Summary Icons */}
+      <Grid container style={{ marginBottom: 16 }} spacing={7}>
+        <Grid item lg={3} md={6} xs={12}>
+          <StockCard
+            icon={AddShoppingCartIcon}
+            title="TOTAL"
+            subtitle="112 THB"
+            color="#00a65a"
+          />
+        </Grid>
+
+        <Grid item lg={3} md={6} xs={12}>
+          <StockCard
+            icon={NewReleasesIcon}
+            title="EMPTY"
+            subtitle="9 PCS."
+            color="#f39c12"
+          />
+        </Grid>
+
+        <Grid item lg={3} md={6} xs={12}>
+          <StockCard
+            icon={AssignmentReturnIcon}
+            title="RETURN"
+            subtitle="1 PCS."
+            color="#dd4b39"
+          />
+        </Grid>
+
+        <Grid item lg={3} md={6} xs={12}>
+          <StockCard
+            icon={StarIcon}
+            title="DISCOUNT"
+            subtitle="5 PCS."
+            color="#00c0ef"
+          />
+        </Grid>
+      </Grid>
+
       <MaterialTable
         id="root_stock"
         title="Stock"
