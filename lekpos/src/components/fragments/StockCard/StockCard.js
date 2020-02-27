@@ -20,7 +20,11 @@ export default function StockCard(props) {
           style={{
             backgroundColor: props.color,
             color: "white",
-            display: "flex"
+            display: "flex",
+            minWidth: 70,
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center"
           }}
         >
           {React.createElement(props.icon, { fontSize: "large" })}
