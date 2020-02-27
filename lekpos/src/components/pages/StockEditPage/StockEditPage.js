@@ -110,7 +110,7 @@ export default props => {
           </CardContent>
           <CardActions>
             <Button variant="contained" color="primary" type="submit">
-              Create
+              Edit
             </Button>
             <Button component={Link} to="/stock" color="default" raised>
               Cancl
@@ -123,12 +123,12 @@ export default props => {
 
   const showPreviewImage = values => {
     if (values.file_obj) {
-      return <img src={values.file_obj} style={{ height: 100 }} />;
+      return <img src={values.file_obj} style={{ height: 200 }} />;
     } else if (values.image) {
       return (
         <img
           src={`${imageUrl}/images/${values.image}`}
-          style={{ height: 100 }}
+          style={{ height: 200 }}
         />
       );
     }
@@ -143,7 +143,7 @@ export default props => {
           validate={values => {
             let errors = {};
             if (!values.name) errors.name = "กรุณาใส่ชื่อก่อน";
-            if (!values.stock) errors.stock = "Enter stock";
+            if (!values.stock || parseInt(values.stock) < 1) errors.stock = "Enter stock";
             if (!values.price) errors.price = "Enter price";
             return errors;
           }}
@@ -155,11 +155,14 @@ export default props => {
           }
           onSubmit={(values, { setSubmitting }) => {
             let formData = new FormData();
+            formData.append("product_id", values.product_id);
             formData.append("name", values.name);
             formData.append("price", values.price);
             formData.append("stock", values.stock);
-            formData.append("image", values.file);
-            dispatch(stockActions.addProduct(formData, props.history));
+            if (values.file) {
+              formData.append("image", values.file);
+            }
+            dispatch(stockActions.updateProduct(formData, props.history));
             setSubmitting(false);
           }}
         >
