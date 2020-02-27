@@ -108,6 +108,14 @@ export default props => {
                         <Typography variant="h6" noWrap>
                           {item.name}
                         </Typography>
+
+                        <Grid container>
+                          <Grid item>
+                            <Typography variant="body1" noWrap>
+                            D{item.product_id} / ฿{item.price}
+                            </Typography>
+                          </Grid>
+                        </Grid>
                       </CardContent>
                     </CardActionArea>
                   </Card>
