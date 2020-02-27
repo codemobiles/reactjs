@@ -95,7 +95,19 @@ export default props => {
             result.map(item => {
               return (
                 <Grid item xs={3}>
-                  <Card>{item.name}</Card>
+                  <Card>
+                    <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      alt="Contemplative Reptile"
+                      height="200"
+                      image={`${imageUrl}/images/${item.image}`}
+                      title="Contemplative Reptile"
+                    />
+
+                    
+                      {item.name}</CardActionArea>
+                  </Card>
                 </Grid>
               );
             })}
