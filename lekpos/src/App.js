@@ -96,7 +96,12 @@ export default function App() {
             <div className={classes.toolbar} />
             <LoginRoute path="/login" component={LoginPage} />
             <Route path="/register" component={RegisterPage} />
-            <SecuredRoute path="/stock" component={StockPage} />
+            <SecuredRoute path="/shop" component={ShopPage} />
+            <SecuredRoute exact={true} path="/stock" component={StockPage} />
+            <SecuredRoute path="/stock/create" component={StockCreatePage} />
+            <SecuredRoute path="/stock/edit/:id" component={StockEditPage} />
+            <SecuredRoute path="/report" component={ReportPage} />
+            <SecuredRoute path="/transaction" component={TransactionPage} />
 
             <Route
               exact={true}
