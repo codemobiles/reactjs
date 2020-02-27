@@ -5,8 +5,8 @@ import { Typography, Grid } from "@material-ui/core";
 export default function StockCard(props) {
   return (
     <Card>
-      <Grid container spacing={3}>
-        <Grid item style={{ flexGrow: 1 }}>
+      <Grid container style={{ minHeight: 70 }}>
+        <Grid item style={{ flexGrow: 1, padding: 24 }}>
           <Typography variant="h4" color="textPrimary">
             {props.title}
           </Typography>
