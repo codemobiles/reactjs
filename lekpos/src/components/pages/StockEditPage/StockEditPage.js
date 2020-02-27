@@ -1,6 +1,6 @@
 import * as stockActions from "./../../../actions/stock.action";
 
-import React from "react";
+import React, {useEffect} from "react";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
@@ -32,7 +32,14 @@ export default props => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    // Initial code   
+    const {id} = props.match.params
+    dispatch(stockActions.getProductById(id))
+  }, [])
+
   
+
 
   const showForm = ({ values, setFieldValue, errors }) => {
     return (
