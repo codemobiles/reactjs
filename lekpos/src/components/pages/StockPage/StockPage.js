@@ -32,6 +32,8 @@ export default props => {
   const stockReducer = useSelector(({ stockReducer }) => stockReducer);
   const dispatch = useDispatch();
 
+  const [open, setOpen] = useState(false);
+
   const [selectedRow, setSelectedRow] = useState(null);
   const [openDialog, setOpenDialog] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -215,6 +217,34 @@ export default props => {
           />
         </Grid>
       </Grid>
+
+      <Button variant="outlined" color="primary" onClick={() => setOpen(true)}>
+        Slide in alert dialog
+      </Button>
+      <Dialog
+        open={open}
+        keepMounted
+        aria-labelledby="alert-dialog-slide-title"
+        aria-describedby="alert-dialog-slide-description"
+      >
+        <DialogTitle id="alert-dialog-slide-title">
+          {"Use Google's location service?"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-slide-description">
+            Let Google help apps determine location. This means sending
+            anonymous location data to Google, even when no apps are running.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Disagree
+          </Button>
+          <Button onClick={handleClose} color="primary">
+            Agree
+          </Button>
+        </DialogActions>
+      </Dialog>
 
       <MaterialTable
         id="root_stock"
