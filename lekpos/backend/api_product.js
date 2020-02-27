@@ -7,12 +7,10 @@ const formidable = require("formidable");
 const path = require("path");
 const fs = require("fs-extra");
 
-
 router.get("/product", jwt.verify, async (req, res) => {
   let doc = await Products.find({}).sort({ created: -1 });
   res.json(doc);
 });
-
 
 // Upload Image
 uploadImage = async (files, doc) => {
@@ -33,12 +31,6 @@ uploadImage = async (files, doc) => {
 };
 
 
-router.post("/product", (req, res)=>{
-  let form  = new formidable.IncomingForm()
-  form.parse(req, (error, fields, files)=>{
-    res.json({error, fields, files})
-  })
-})
 
 // Add Product
 router.post("/product", async (req, res) => {
@@ -78,6 +70,8 @@ router.put("/product", (req, res) => {
   }
 });
 
-
+router.get("/testparams/:from-:to/", (req, res) => {
+  res.json({ result: req.params });
+});
 
 module.exports = router;
