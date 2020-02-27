@@ -8,6 +8,7 @@ const setStateShoptoUpdateOrder = payload => ({
 });
 
 const doUpdateOrder = (dispatch, orderLines) => {
+  debugger;
   let totalPrice = 0;
   let taxAmt = 0;
   for (let item of orderLines) {
