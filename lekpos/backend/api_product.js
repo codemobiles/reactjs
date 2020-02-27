@@ -74,4 +74,11 @@ router.get("/testparams/:from-:to/", (req, res) => {
   res.json({ result: req.params });
 });
 
+
+// Get single
+router.get("/product/id/:id", async (req, res) => {
+  let doc = await Products.findOne({ product_id: req.params.id });
+  res.json(doc);
+});
+
 module.exports = router;
