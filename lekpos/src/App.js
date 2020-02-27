@@ -90,8 +90,8 @@ export default function App() {
     <Router>
       <Switch>
         <div className={classes.root}>
-          {loginActions.isLoggedIn() && <Header />}
-          {loginActions.isLoggedIn() && <Menu open={true} />}
+          {loginActions.isLoggedIn() && <Header handleDrawerOpen={()=>setDrawerOpen(true)} />}
+          {loginActions.isLoggedIn() && <Menu handleDrawerClose={()=>setDrawerOpen(false)} open={true} />}
           <Container className={classes.content} maxWidth={false}>
             <div className={classes.toolbar} />
             <LoginRoute path="/login" component={LoginPage} />
