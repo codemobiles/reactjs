@@ -26,7 +26,7 @@ theme.breakpoints.up("sm")
 
 
 # React.JS Frontend Dependency
-yarn add axios chart.js react-chartjs-2 react-moment react-number-format react-router-dom redux react-redux formik redux-logger redux-thunk url-join clsx @material-ui/lab  jsonwebtoken material-table
+yarn add axios chart.js react-chartjs-2 react-moment react-number-format react-router-dom redux react-redux formik redux-logger redux-thunk url-join clsx @material-ui/lab  jsonwebtoken material-table formik-material-ui
 
 # NodeJS Backend Dependency
 npm i express body-parser fs-extra formidable cors bcryptjs rand-token jsonwebtoken mongoose mongoose-sequence onesignal-node
