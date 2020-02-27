@@ -91,7 +91,7 @@ export default function App() {
       <Switch>
         <div className={classes.root}>
           {loginActions.isLoggedIn() && <Header />}
-          {loginActions.isLoggedIn() && <Menu />}
+          {loginActions.isLoggedIn() && <Menu open={true} />}
           <Container className={classes.content} maxWidth={false}>
             <div className={classes.toolbar} />
             <LoginRoute path="/login" component={LoginPage} />

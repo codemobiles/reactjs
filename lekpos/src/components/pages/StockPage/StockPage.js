@@ -240,7 +240,7 @@ export default props => {
           <Button onClick={handleClose} color="primary">
             Disagree
           </Button>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={() => setOpen(false)} color="primary">
             Agree
           </Button>
         </DialogActions>
