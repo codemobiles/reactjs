@@ -177,6 +177,10 @@ export default props => {
 
   return (
     <div className={classes.root}>
+      {/* Summary Cards */}
+      <div>
+        <StockCard />
+      </div>
       <MaterialTable
         id="root_stock"
         title="Stock"
@@ -212,7 +216,6 @@ export default props => {
           )
         }}
       />
-
       {showDialog()}
     </div>
   );
