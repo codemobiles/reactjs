@@ -56,6 +56,7 @@ const useStyles = makeStyles(theme => ({
 export default function App() {
   const classes = useStyles();
   useSelector(({ loginReducer }) => loginReducer);
+  const [drawerOpen, setDrawerOpen] = React.useState(true);
 
   // Protected Route
   const SecuredRoute = ({ component: Component, ...rest }) => (
@@ -90,8 +91,15 @@ export default function App() {
     <Router>
       <Switch>
         <div className={classes.root}>
-          {loginActions.isLoggedIn() && <Header handleDrawerOpen={()=>setDrawerOpen(true)} />}
-          {loginActions.isLoggedIn() && <Menu handleDrawerClose={()=>setDrawerOpen(false)} open={true} />}
+          {loginActions.isLoggedIn() && (
+            <Header handleDrawerOpen={() => setDrawerOpen(true)} />
+          )}
+          {loginActions.isLoggedIn() && (
+            <Menu
+              handleDrawerClose={() => setDrawerOpen(false)}
+              open={drawerOpen}
+            />
+          )}
           <Container className={classes.content} maxWidth={false}>
             <div className={classes.toolbar} />
             <LoginRoute path="/login" component={LoginPage} />
