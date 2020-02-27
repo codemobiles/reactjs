@@ -94,7 +94,11 @@ export default props => {
           {result &&
             result.map(item => {
               return (
-                <Grid item xs={3}>
+                <Grid
+                  item
+                  xs={3}
+                  onClick={() => dispatch(shopActions.addOrder(item))}
+                >
                   <Card>
                     <CardActionArea>
                       <CardMedia
@@ -117,21 +121,27 @@ export default props => {
                           </Grid>
 
                           {/* Select Indicator Begin */}
-                          <Grid item>
-                            <div
-                              style={{ display: "flex", flexDirection: "row" }}
-                            >
-                              <Typography
-                                style={{ marginRight: 4 }}
-                                variant="body1"
-                                color="textPrimary"
+                          {isSelectedItem(item) && (
+                            <Grid item>
+                              <div
+                                style={{
+                                  display: "flex",
+                                  flexDirection: "row"
+                                }}
                               >
-                                X{item.qty}
-                              </Typography>
+                                <Typography
+                                  style={{ marginRight: 4 }}
+                                  variant="body1"
+                                  color="textPrimary"
+                                >
+                                  X{item.qty}
+                                </Typography>
 
-                              <StarsIcon className={classes.star} />
-                            </div>
-                          </Grid>
+                                <StarsIcon className={classes.star} />
+                              </div>
+                            </Grid>
+                          )}
+
                           {/* Select Indicator End */}
                         </Grid>
                       </CardContent>
