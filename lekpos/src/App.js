@@ -58,6 +58,15 @@ export default function App() {
   useSelector(({ loginReducer }) => loginReducer);
   const [drawerOpen, setDrawerOpen] = React.useState(true);
 
+  const theme = createMuiTheme({
+    palette: {
+      primary: { 500: "#000010" }
+    },
+    status: {
+      danger: "orange"
+    }
+  });
+
   // Protected Route
   const SecuredRoute = ({ component: Component, ...rest }) => (
     <Route
@@ -90,33 +99,35 @@ export default function App() {
   return (
     <Router>
       <Switch>
-        <div className={classes.root}>
-          {loginActions.isLoggedIn() && (
-            <Header
-              handleDrawerOpen={() => {
-                setDrawerOpen(!drawerOpen);
-              }}
-            />
-          )}
-          {loginActions.isLoggedIn() && <Menu open={drawerOpen} />}
-          <Container className={classes.content} maxWidth={false}>
-            <div className={classes.toolbar} />
-            <LoginRoute path="/login" component={LoginPage} />
-            <Route path="/register" component={RegisterPage} />
-            <SecuredRoute path="/shop" component={ShopPage} />
-            <SecuredRoute exact={true} path="/stock" component={StockPage} />
-            <SecuredRoute path="/stock/create" component={StockCreatePage} />
-            <SecuredRoute path="/stock/edit/:id" component={StockEditPage} />
-            <SecuredRoute path="/report" component={ReportPage} />
-            <SecuredRoute path="/transaction" component={TransactionPage} />
+        <ThemeProvider theme={theme}>
+          <div className={classes.root}>
+            {loginActions.isLoggedIn() && (
+              <Header
+                handleDrawerOpen={() => {
+                  setDrawerOpen(!drawerOpen);
+                }}
+              />
+            )}
+            {loginActions.isLoggedIn() && <Menu open={drawerOpen} />}
+            <Container className={classes.content} maxWidth={false}>
+              <div className={classes.toolbar} />
+              <LoginRoute path="/login" component={LoginPage} />
+              <Route path="/register" component={RegisterPage} />
+              <SecuredRoute path="/shop" component={ShopPage} />
+              <SecuredRoute exact={true} path="/stock" component={StockPage} />
+              <SecuredRoute path="/stock/create" component={StockCreatePage} />
+              <SecuredRoute path="/stock/edit/:id" component={StockEditPage} />
+              <SecuredRoute path="/report" component={ReportPage} />
+              <SecuredRoute path="/transaction" component={TransactionPage} />
 
-            <Route
-              exact={true}
-              path="/"
-              component={() => <Redirect to="/login" />}
-            />
-          </Container>
-        </div>
+              <Route
+                exact={true}
+                path="/"
+                component={() => <Redirect to="/login" />}
+              />
+            </Container>
+          </div>
+        </ThemeProvider>
       </Switch>
     </Router>
   );

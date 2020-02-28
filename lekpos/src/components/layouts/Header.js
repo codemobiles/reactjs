@@ -145,7 +145,8 @@ const Header = props => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            React / NodeJS / Express / MongoDB Workshop
+            React / NodeJS / Express / MongoDB Workshop Ver.{" "}
+            {process.env.REACT_APP_VERSION}
             <Typography variant="body1"> By CodeMobiles </Typography>
           </Typography>
 
