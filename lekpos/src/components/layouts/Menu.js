@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
     width: theme.spacing(7)
   },
   bannerOpen: {
-    backgroundImage: "url(" + "/images/background_menu.jpg" + ")"
+    backgroundImage: "url(" + `${process.env.PUBLIC_URL}/images/background_menu.jpg` + ")"
   },
   drawer: {
     width: drawerWidth,
