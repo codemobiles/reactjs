@@ -60,7 +60,7 @@ export default function App() {
 
   const theme = createMuiTheme({
     palette: {
-      primary: { 500: "#000010" }
+      500: process.env.REACT_APP_IS_PRODUCTION === 1 ? "#1E88E5" : "#000000"
     },
     status: {
       danger: "orange"
