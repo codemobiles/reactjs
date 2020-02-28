@@ -60,7 +60,7 @@ export default function App() {
 
   const theme = createMuiTheme({
     palette: {
-      500: process.env.REACT_APP_IS_PRODUCTION === 1 ? "#1E88E5" : "#000000"
+      500: process.env.REACT_APP_IS_PRODUCTION === "1" ? "#1E88E5" : "#000000"
     },
     status: {
       danger: "orange"
@@ -97,7 +97,9 @@ export default function App() {
   );
 
   return (
-    <Router>
+    <Router
+      basename={process.env.REACT_APP_IS_PRODUCTION === "1" ? "/demo" : ""}
+    >
       <Switch>
         <ThemeProvider theme={theme}>
           <div className={classes.root}>
