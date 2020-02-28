@@ -79,7 +79,7 @@ export default props => {
           <ChevronLeftIcon style={{ color: "white" }} />
         </IconButton>
       </div>
-      {props.open && <img height={250} src="/images/menu_banner.jpg" alt="" />}
+      {props.open && <img height={250} src={`${process.env.PUBLIC_URL}/images/menu_banner.jpg`} alt="" />}
       <Divider />
 
       <List>
