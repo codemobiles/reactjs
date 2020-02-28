@@ -37,6 +37,28 @@ router.post("/login", async (req, res) => {
   }
 });
 
+
+// Refresh Token
+let count = 0;
+router.post("/refresh/token", function(req, res) {
+  const refreshToken = req.body.refreshToken;
+  console.log("Refresh Token : " + count++);
+
+  if (refreshToken in refreshTokens) {
+    const payload = {
+      username: refreshTokens[refreshToken],
+      level: "normal"
+    };
+    const token = jwt.sign(payload, "10000"); // 5 min
+    res.json({ jwt: token });
+  } else {
+    console.log("Not found");
+    return res
+      .status(403)
+      .json({ auth: false, message: "Invalid refresh token" });
+  }
+});
+
 router.post("/register", async (req, res) => {
   try {
     req.body.password = await bcrypt.hash(req.body.password, 8);
