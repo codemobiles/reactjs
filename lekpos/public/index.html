@@ -18,6 +18,13 @@
     OneSignal.init({
       appId: "04f3aa0c-6a1f-4239-9e54-61d215f5bd46",
     });
+
+    OneSignal.getUserId(function (userId) {
+        if (null != userId) {
+          // alert("userID: " + userId)
+          console.log("userID: " + userId)
+        }
+      });
   });
 </script>
   <!--
