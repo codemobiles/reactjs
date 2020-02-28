@@ -75,7 +75,7 @@ export default props => {
     >
       <div className={classes.toolbar}>
         <IconButton onClick={props.handleDrawerClose}>
-          <img src="/images/logo_white.png" height="30" />
+          <img src={`${process.env.PUBLIC_URL}/images/logo_white.png`} height="30" />
           <ChevronLeftIcon style={{ color: "white" }} />
         </IconButton>
       </div>
